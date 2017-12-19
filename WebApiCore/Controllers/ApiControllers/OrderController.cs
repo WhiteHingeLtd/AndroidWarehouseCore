@@ -28,17 +28,35 @@ namespace WebApiCore.Controllers.ApiControllers
             }
             return returnable;
         }
+        /// <summary>
+        /// Throws an error
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Test/Throw")]
         public HttpResponseMessage ThrowError()
         {
             throw new NullReferenceException();
         }
+        /// <summary>
+        /// Returns a status code
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Test/500")]
         public HttpResponseMessage Return500()
         {
             return new HttpResponseMessage(HttpStatusCode.Gone);
+        }
+        /// <summary>
+        /// Returns the specified status code
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Test/status/{code}")]
+        public HttpResponseMessage ReturnCode(int code)
+        {
+            return new HttpResponseMessage((HttpStatusCode)code);
         }
     }
 }
