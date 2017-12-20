@@ -58,7 +58,7 @@ namespace WebApiCore
                     Description = "White Hinge System 2.0 Web Api"
                 });
 
-                c.IncludeXmlComments(@"\\SqlServer\netStandardPackages\WebApiCore.xml");
+                //c.IncludeXmlComments(@"\\SqlServer\netStandardPackages\WebApiCore.xml");
             });
         }
         /// <summary>
