@@ -1,0 +1,43 @@
+﻿@using WhiteHingeFramework.Classes.Items
+@model WhiteHingeFramework.Classes.Items.NewWhlSku
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(x => Model.Sku)</h2>
+
+<ul class="list-group">
+    @foreach (var loc in Model.Locations)
+    {
+        switch(loc.LocType)
+        {
+            case LocationType.Unused:
+                break;
+            case LocationType.Storage:
+                break;
+            case LocationType.Pickable:
+                break;
+            case LocationType.Prepack:
+                break;
+            case LocationType.Delivery:
+                break;
+            case LocationType.PrepackInstant:
+                break;
+            case LocationType.PrepackComplete:
+                break;
+            case LocationType.Damaged:
+                break;
+            case LocationType.Lost:
+                break;
+            case LocationType.Returns:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+     <li class="list-group-item list-group-item-success">First item</li>
+    <li class="list-group-item list-group-item-info">Second item</li>
+    <li class="list-group-item list-group-item-warning">Third item</li>
+    <li class="list-group-item list-group-item-danger">Fourth item</li>
+</ul> 

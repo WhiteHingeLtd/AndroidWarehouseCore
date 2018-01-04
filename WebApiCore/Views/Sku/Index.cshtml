@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WhiteHingeFramework.Classes.Items.NewWhlSku>
+@{
+    ViewData["Title"] = "Item Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["SearchString"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["SalesSortParm"]">@Html.DisplayNameFor(model => model.Sku)</a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titles.Label)
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["SalesSortParm"]">@Html.DisplayNameFor(model => model.SalesData.Weighted)</a>
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titles.Label)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesData.Weighted)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Sku">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Sku">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.Sku">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

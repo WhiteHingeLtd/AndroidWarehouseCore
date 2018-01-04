@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WhiteHingeFramework.Classes.Items.NewWhlSku>
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeeklySales)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeeklySales)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

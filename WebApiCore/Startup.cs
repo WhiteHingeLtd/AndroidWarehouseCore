@@ -87,8 +87,9 @@ namespace WebApiCore
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/netcore/swagger/v1/swagger.json", "WhiteHinge API");
-                c.SwaggerEndpoint(@"http://localhost/netcore/swagger/v1/swagger.json","Debug API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WhiteHinge API");
+                c.SwaggerEndpoint(@"http://localhost/swagger/v1/swagger.json","Debug API");
+                c.SwaggerEndpoint(@"http://sqlserver.ad.whitehinge.com/Sys2/swagger/docs/v1","Production API");
             });
 
             app.UseMvc(routes =>
