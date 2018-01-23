@@ -29,30 +29,11 @@ namespace WebApiCore.Controllers
             ms.Position = 0;
             var skus = Serializer.Deserialize<List<NewWhlSku>>(ms);
             ms.Dispose();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             return skus;
         }
-        // GET: Sku
-        //public ActionResult Index(string sortOrder)
-        //{
-        //    ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "sku_desc" : "";
-        //    ViewData["SalesSortParm"] = sortOrder == "Sales" ? "sales_desc" : "Sales";
-        //    var skus = LoadCollection();
-        //    switch (sortOrder)
-        //    {
-        //        case "sku_desc":
-        //            skus = skus.OrderByDescending(x => x.Sku).ToList();
-        //            break;
-        //        case "Sales":
-        //            skus = skus.OrderBy(x => x.SalesData.Weighted).ToList();
-        //            break;
-        //        case "sales_desc":
-        //            skus = skus.OrderByDescending(x => x.SalesData.Weighted).ToList();
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    return View(skus.Take(100));
-        //}
+        
         public async Task<ActionResult> Index(string sortOrder,string searchString)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "sku_desc" : "";
@@ -90,7 +71,10 @@ namespace WebApiCore.Controllers
                     break;
             }
 
-            return View(skus);
+            GC.Collect();
+            var items = HttpContext.Items.Keys.ToList();
+            Console.WriteLine(items.Count);
+            return View(skus.Take(100));
         }
         /// <summary>
         /// Generates the SKU from the given parameter

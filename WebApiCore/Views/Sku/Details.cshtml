@@ -1,5 +1,5 @@
 ﻿@using WhiteHingeFramework.Classes.Items
-@model WhiteHingeFramework.Classes.Items.NewWhlSku
+@model NewWhlSku
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,31 +13,37 @@
         switch(loc.LocType)
         {
             case LocationType.Unused:
+                <li class="list-group-item list-group-item-danger">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Storage:
+                <li class="list-group-item list-group-item-info">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Pickable:
+                <li class="list-group-item list-group-item-success">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Prepack:
+                <li class="list-group-item list-group-item-warning">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Delivery:
                 break;
             case LocationType.PrepackInstant:
+                <li class="list-group-item list-group-item-warning">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.PrepackComplete:
+                <li class="list-group-item list-group-item-warning">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Damaged:
+                <li class="list-group-item list-group-item-danger">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Lost:
+                <li class="list-group-item list-group-item-danger">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             case LocationType.Returns:
+                <li class="list-group-item list-group-item-danger">@Html.DisplayFor(x => loc.ShelfName)</li>
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                <li class="list-group-item list-group-item-danger">@Html.DisplayFor(x => loc.ShelfName)</li>
+                break;
         }
     }
-     <li class="list-group-item list-group-item-success">First item</li>
-    <li class="list-group-item list-group-item-info">Second item</li>
-    <li class="list-group-item list-group-item-warning">Third item</li>
-    <li class="list-group-item list-group-item-danger">Fourth item</li>
 </ul> 

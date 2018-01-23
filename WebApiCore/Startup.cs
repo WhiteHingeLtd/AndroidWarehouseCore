@@ -47,7 +47,6 @@ namespace WebApiCore
 
             });
             services.Configure<GzipCompressionProviderOptions>(x => x.Level = CompressionLevel.Fastest);
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
